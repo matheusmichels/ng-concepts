@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Matheus Michels",
+      "age": 20,
+      "email": "matheus.michels@ilegra.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Guilherme Michels",
+      "age": 18,
+      "email": "guilherme.michels@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 3,
+      "name": "Administrador",
+      "age": 20,
+      "email": "admin@ilegra.com",
+      "password": "admin"
+    }
+  ]
+}
