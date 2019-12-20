@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "json-server --watch ./src/app/mocks/db.json"
+    "api": "json-server --watch ./src/app/_mocks/db.json"
   },
   "private": true,
   "dependencies": {

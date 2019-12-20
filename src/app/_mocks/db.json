@@ -20,27 +20,6 @@
       "age": 20,
       "email": "admin@ilegra.com",
       "password": "admin"
-    },
-    {
-      "name": "Matheus Michels",
-      "age": 20,
-      "email": "michelsdev@gmail.com",
-      "password": "123",
-      "id": 4
-    },
-    {
-      "name": "Matheus Michels",
-      "age": 20,
-      "email": "levir@gmail.com",
-      "password": "123",
-      "id": 5
-    },
-    {
-      "name": "Matheus Michels",
-      "age": 20,
-      "email": "michelsdev@gmail.co",
-      "password": "123",
-      "id": 6
     }
   ]
 }

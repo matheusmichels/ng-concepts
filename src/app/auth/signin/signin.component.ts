@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +14,7 @@ export class SigninComponent implements OnInit {
   modalStatus: string;
   errorMessage: string;
 
-  constructor(private router: Router, private userService: UserService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -22,19 +22,14 @@ export class SigninComponent implements OnInit {
     let error = '';
 
     if (!this.email || !this.password) {
-      error = 'Please, fill in email and password fields!';
+      error = 'Please, fill in email and password fields';
     }
 
     if (!error) {
-      const user = await this.userService.getByEmailAndPassword(
-        this.email,
-        this.password
-      );
-
-      if (user) {
-        this.router.navigate(['app']);
-      } else {
-        error = 'Incorrect email or password';
+      try {
+        await this.authService.signin(this.email, this.password);
+      } catch (err) {
+        error = err.message;
       }
     }
 
