@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 import { User } from '../shared/user.model';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient, private route: Router) {}
+  constructor(private http: HttpClient) {}
 
-  signin(email: string, password: string): void {
-    this.http.get<User[]>(`${environment.apiUrl}/users`).subscribe(users => {
-      const user = users
-        .filter(u => u.email === email && u.password === password)
-        .shift();
-
-      if (user) {
-        this.route.navigate(['app']);
-      } else {
-        alert('Incorrect email or password!');
-      }
-    });
+  getByEmail(email: string): Promise<User> {
+    return this.http
+      .get<User>(`${environment.apiUrl}/users?email=${email}`)
+      .pipe(map(users => users[0]))
+      .toPromise();
   }
 
-  signup(user: User): Observable<any> {
-    return this.http.post<any>(`${environment.apiUrl}/users`, user);
+  getByEmailAndPassword(email: string, password: string): Promise<User> {
+    return this.http
+      .get<User[]>(
+        `${environment.apiUrl}/users?email=${email}&password=${password}`
+      )
+      .pipe(map(users => users[0]))
+      .toPromise();
   }
 
-  signout() {}
+  store(user: User): Promise<any> {
+    return this.http.post<any>(`${environment.apiUrl}/users`, user).toPromise();
+  }
 }

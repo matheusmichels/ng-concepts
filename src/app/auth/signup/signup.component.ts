@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,27 +15,42 @@ export class SignupComponent implements OnInit {
   password: string;
   confirmPassword: string;
 
-  constructor(private userService: UserService) {}
+  modalStatus: string;
+  errorMessage: string;
+
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {}
 
-  signup() {
-    const { name, age, email, password } = this;
+  async signup(): Promise<void> {
+    const { name, age, email, password, confirmPassword } = this;
 
-    if (!name || !age || !email || !password) {
-      alert('Please, fill in all fields!');
-      return;
+    let error = '';
+
+    if (!name || !age || !email || !password || !confirmPassword) {
+      error = 'Please, fill in all fields';
+    } else if (password !== confirmPassword) {
+      error = 'The passwords does not match';
     }
 
-    this.userService
-      .signup({
-        name,
-        age,
-        email,
-        password
-      })
-      .subscribe(() => {
+    if (!error) {
+      const userExists = await this.userService.getByEmail(email);
+
+      if (userExists) {
+        error = 'Email already in use';
+      } else {
+        await this.userService.store({ name, age, email, password });
+
         alert('Account successfully created!');
-      });
+        this.router;
+      }
+    }
+
+    this.errorMessage = error;
+    this.showErrorModal(!!this.errorMessage);
+  }
+
+  showErrorModal(show: boolean) {
+    this.modalStatus = show ? 'show' : '';
   }
 }

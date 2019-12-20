@@ -1,4 +1,14 @@
-<div class="d-flex align-items-center justify-content-center h-100">
+<div class="d-flex align-items-center justify-content-center flex-column h-100">
+  <div
+    class="alert alert-warning alert-dismissible fade {{ modalStatus }}"
+    role="alert"
+  >
+    <strong>{{ errorMessage }}</strong>
+    <button (click)="showErrorModal(false)" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
   <form class="d-flex flex-column">
     <div class="form-group">
       <label>Email address *</label>
@@ -25,7 +35,10 @@
       Enter
     </button>
 
-    <a class="alert-light mt-3 align-self-center" routerLink="signup"
+    <a
+      class="alert-light mt-3 align-self-center"
+      routerLink="signup"
+      appHighlight
       >Don't have an account? Signup here</a
     >
   </form>
