@@ -20,6 +20,13 @@
       "age": 20,
       "email": "admin@ilegra.com",
       "password": "admin"
+    },
+    {
+      "name": "Clovis Michels",
+      "age": 53,
+      "email": "clovis@clovis.com",
+      "password": "123",
+      "id": 4
     }
   ]
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
-import { User } from '../_shared/user.model';
+import { User } from '../models/user.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

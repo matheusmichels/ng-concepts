@@ -8,7 +8,7 @@ import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { TokenInterceptor } from './_services/token.interceptor';
+import { TokenInterceptor } from './_shared/services/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent],

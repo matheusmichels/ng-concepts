@@ -25,3 +25,27 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Structure
+
+- **src/app**
+  - **\_mocks**
+    - _db.json_
+  - **\_shared**
+    - **[+] components**
+    - **[+] models**
+    - **[+] services**
+  - **modules**
+    - **auth**
+      - **[+] components**
+      - **[+] pages**
+      - _auth-routing.module.ts_
+      - _auth.module.ts_
+    - **home**
+      - **[+] components**
+      - **[+] pages**
+      - _home-routing.module.ts_
+      - _home.module.ts_
+  - _app-routing.module.ts_
+  - _app.component.ts|html|scss_
+  - _app.module.ts_
